@@ -67,7 +67,16 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+
+    var number = n
+    var result = 0
+    do {
+        result++
+        number /= 10
+    } while (number > 0)
+    return result
+}
 
 /**
  * Простая
@@ -75,7 +84,11 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+
+    if (n < 3) return 1
+    return fib(n - 1) + fib(n - 2)
+}
 
 /**
  * Простая
@@ -164,7 +177,18 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var number = n
+    var result = 0
+
+    do {
+        result *= 10
+        result += number % 10
+        number /= 10
+    } while (number > 0)
+
+    return result
+}
 
 /**
  * Средняя
@@ -175,7 +199,10 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    if (n == revert(n)) return true
+    return false
+}
 
 /**
  * Средняя
