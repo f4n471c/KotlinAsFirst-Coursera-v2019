@@ -132,7 +132,13 @@ fun mean(list: List<Double>): Double = TODO()
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun center(list: MutableList<Double>): MutableList<Double> = TODO()
+fun center(list: MutableList<Double>): MutableList<Double> {
+    var temp: Double = list.sum() / list.size
+    for (i in list.indices) {
+        list[i] = list[i] - temp
+    }
+    return list
+}
 
 /**
  * Средняя
@@ -151,7 +157,15 @@ fun times(a: List<Int>, b: List<Int>): Int = TODO()
  * Коэффициенты многочлена заданы списком p: (p0, p1, p2, p3, ..., pN).
  * Значение пустого многочлена равно 0 при любом x.
  */
-fun polynom(p: List<Int>, x: Int): Int = TODO()
+fun polynom(p: List<Int>, x: Int): Int {
+    var result: Int = 0
+    var temp: Int = 1
+    for (i in p.indices) {
+        result += p[i] * temp
+        temp *= x
+    }
+    return result
+}
 
 /**
  * Средняя
