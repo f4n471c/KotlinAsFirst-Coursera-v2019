@@ -154,7 +154,14 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
+fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
+    var result: MutableMap<String, String> = mapA.toMutableMap()
+    for ((key, value) in mapB) {
+        if (key in result && result[key] != mapB[key]) result[key] += ", " + mapB[key]
+        if (key !in result) result[key] = value
+    }
+    return result
+}
 
 /**
  * Средняя
