@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import java.lang.Exception
+
 /**
  * Пример
  *
@@ -145,7 +147,41 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun plusMinus(expression: String): Int {
+    val parts: List<String> = expression.split(" ")
+    var result = 0
+    var plus: Boolean = true
+    var minus: Boolean = false
+
+    try {
+        for (i in parts) {
+            if (i == "+") {
+                if (plus || minus) throw IllegalArgumentException()//java.lang.IllegalArgumentException()
+                else {
+                    plus = true
+                    continue
+                }
+            }
+            if (i == "-") {
+                if (plus || minus) throw IllegalArgumentException()
+                else {
+                    minus = true
+                    continue
+                }
+            }
+            if (plus) {
+                result += i.toInt()
+                plus = false
+            } else {
+                result -= i.toInt()
+                minus = false
+            }
+        }
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
+    return result
+}
 
 /**
  * Сложная
