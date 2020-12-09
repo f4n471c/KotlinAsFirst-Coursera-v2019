@@ -152,7 +152,6 @@ fun plusMinus(expression: String): Int {
     var result = 0
     var plus: Boolean = true
     var minus: Boolean = false
-
     try {
         for (i in parts) {
             if (i == "+") {
@@ -169,6 +168,8 @@ fun plusMinus(expression: String): Int {
                     continue
                 }
             }
+            if (!i.matches(Regex("""\d+"""))) throw IllegalArgumentException()
+
             if (plus) {
                 result += i.toInt()
                 plus = false
